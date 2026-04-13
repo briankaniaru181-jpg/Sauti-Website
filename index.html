@@ -1,11 +1,724 @@
-<h2>Recognized By</h2>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="margin: 0 20px;">
-        <img src="niru.jpeg" alt="NIRU Logo" style="max-width: 150px;">
-        <p>NIRU</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sauti AI Multilingual EdTech for Africa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0D0D0D;
+    --paper: #F5F2EC;
+    --accent: #C8391A;
+    --muted: #6B6560;
+    --rule: rgba(13,13,13,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Syne', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4vw;
+    border-bottom: 0.5px solid var(--rule);
+    background: rgba(245,242,236,0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-left {
+    padding: 6vw 4vw 6vw 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 0.5px solid var(--rule);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 42ch;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta {
+    display: block;
+    width: 100%;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn:hover { background: var(--ink); color: var(--paper); }
+
+  .btn-fill {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .btn-fill:hover { background: #a32c14; border-color: #a32c14; color: #fff; }
+
+  .hero-right {
+    padding: 6vw 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .hero-stat {
+    padding: 2rem 1.5rem;
+    border-right: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .hero-stat:nth-child(even) { border-right: none; }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-pull {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--ink);
+    padding: 3rem 0 0;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { border-bottom: 1px solid var(--rule); }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 3rem 4vw 2rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-text {
+    padding: 4rem 4vw;
+    border-right: 0.5px solid var(--rule);
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    max-width: 52ch;
+  }
+
+  .about-text p strong { color: var(--ink); font-weight: 700; }
+
+  .about-aside {
+    padding: 4rem 4vw;
+  }
+
+  .about-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border: 0.5px solid var(--rule);
+    color: var(--muted);
+  }
+
+  .achievement-card {
+    border: 0.5px solid var(--rule);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .achievement-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+  }
+
+  .achievement-card h4 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .achievement-card p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SAUTI ── */
+  .sauti-hero {
+    padding: 4rem 4vw;
+    border-bottom: 0.5px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .sauti-tagline {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 36ch;
+    line-height: 1.25;
+  }
+
+  .sauti-tagline em { font-style: italic; color: var(--accent); }
+
+  .sauti-modules {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .module-card {
+    padding: 2.5rem 2rem;
+    border-right: 0.5px solid var(--rule);
+    transition: background 0.2s;
+  }
+
+  .module-card:last-child { border-right: none; }
+  .module-card:hover { background: rgba(13,13,13,0.03); }
+
+  .module-icon {
+    font-family: var(--mono);
+    font-size: 22px;
+    margin-bottom: 1.25rem;
+    display: block;
+    color: var(--accent);
+  }
+
+  .module-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .module-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .module-lang {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  /* ── TECH STACK ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .stack-item {
+    padding: 2rem;
+    border-right: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .stack-item:nth-child(3n) { border-right: none; }
+
+  .stack-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .stack-value {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    padding: 6rem 4vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .closing-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .closing-contact h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-links a {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover { color: var(--accent); }
+
+  .contact-links .cl { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero-name    { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-bio     { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-cta     { animation: fadeUp 0.6s ease 0.3s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { border-right: none; }
+    .hero-right { border-top: 0.5px solid var(--rule); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-text { border-right: none; border-bottom: 0.5px solid var(--rule); }
+    .sauti-modules { grid-template-columns: 1fr 1fr; }
+    .module-card:nth-child(2) { border-right: none; }
+    .module-card { border-bottom: 0.5px solid var(--rule); }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .stack-item:nth-child(3n) { border-right: 0.5px solid var(--rule); }
+    .stack-item:nth-child(2n) { border-right: none; }
+    .closing { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .sauti-modules { grid-template-columns: 1fr; }
+    .module-card { border-right: none; }
+    .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
+    <img src="Sauti_logo.png" alt="Sauti AI Logo" style="height:32px;width:32px;object-fit:contain;">
+    Sauti AI
+  </a>
+  <ul class="nav-links">
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
+      <h1 class="hero-name">Sauti<br><em>AI</em></h1>
+      <p class="hero-bio">
+        AI-powered education in the languages Kenyan students actually speak. Sauti AI makes the CBC curriculum accessible in Swahili and local languages for the first time.
+      </p>
+      <div class="hero-cta">
+        
+        <a href="/cdn-cgi/l/email-protection#5436263d353a3f353a3d352621656c65727762606f3339353d387a373b39" class="btn btn-fill" style="display:block;text-align:center;">Book a Demo</a>
+      </div>
     </div>
-    <div style="margin: 0 20px;">
-        <img src="jkuat.png" alt="JKUAT Logo" style="max-width: 150px;">
-        <p>JKUAT</p>
+  </div>
+
+  <div class="hero-right">
+    <p class="hero-pull">"We are not asking for permission to build. We are asking for the infrastructure to scale what already works."</p>
+
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <div class="stat-num">3<span style="font-size:1.5rem;color:var(--muted);">rd</span></div>
+        <div class="stat-label">Generative &amp; Agentic AI<br>NIRU AI Hackathon 2026</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">1<span style="font-size:1.5rem;color:var(--muted);">st</span></div>
+        <div class="stat-label">Culture Preservation<br>JKUAT Hackathon 2025</div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Our Mission</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        <strong>Sauti AI</strong> was founded on a simple observation: Kenya's Competency-Based Curriculum is delivered almost entirely in English yet for millions of students, English is a second or third language. Language should never be the barrier between a child and their education.
+      </p>
+      <p>
+        We build AI tools that meet learners where they are. Our flagship product, <strong>CBC Msaidizi</strong>, lets students query the full CBC syllabus in Swahili for the first time. The urgency is backed by evidence: <a href="https://www.unesco.org/en/articles/new-unesco-report-calls-multilingual-education-unlock-learning-and-inclusion" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);">UNESCO reports</a> that in Africa, children learning in a familiar language are 30% more likely to read with understanding by the end of primary school compared to those taught in an unfamiliar language.
+      </p>
+      <p>
+        And as <a href="https://www.sciencedirect.com/science/article/pii/S0738059325001750" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">one peer-reviewed study</a> notes, "Our findings revealed that English is the prioritised language in education due to exams being set in English, the status of the language in local and global contexts, and the possibility of getting a prestigious job. Swahili is used to explain, elaborate, and enhance learners' comprehension of subject content. Swahili is considered more engaging for learners, as they understand the language better and can focus on the new concepts and terms of the subject matter."
+      </p>
+      <p>
+        Our platform spans four modules serving Kenyan learners and institutions from a CBC-aligned Swahili chatbot to a transcription engine supporting 19 local languages and a Swahili digital library. All running on a fine-tuned, locally-optimised AI model built for African language contexts.
+      </p>
+      <p>
+        Sauti AI has been validated at the highest levels of Kenya's AI ecosystem recognised at both the NIRU AI Hackathon Grand Finale and the JKUAT Interuniversity Hackathon 2025.
+      </p>
+    </div>
+
+    <div class="about-aside">
+      <div class="about-tag-row">
+        <span class="tag">Generative AI</span>
+        <span class="tag">EdTech</span>
+        <span class="tag">Swahili NLP</span>
+        <span class="tag">CBC Curriculum</span>
+        <span class="tag">African Languages</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Speech Recognition</span>
+        <span class="tag">Digital Library</span>
+      </div>
+
+      <div class="achievement-card">
+        <h4>3rd Place NIRU AI Hackathon 2026</h4>
+        <p>Generative &amp; Agentic AI Category</p>
+      </div>
+
+      <div class="achievement-card">
+        <h4>Winner JKUAT Interuniversity Hackathon 2025</h4>
+        <p>Culture Preservation &amp; Archiving Category · Jomo Kenyatta University of Agriculture and Technology</p>
+      </div>
+
+      <div class="achievement-card">
+        <h4>Top-15 National Finalist NIRU AI Hackathon</h4>
+        <p>Top 15 out of 2,500+ submissions nationwide</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">The Platform</h2>
+  </div>
+
+  <div class="sauti-hero">
+    <p class="sauti-tagline">
+      A multilingual AI platform for Kenyan education and <em>language access</em> built from the ground up.
+    </p>
+    <div>
+      <a href="https://github.com/briankaniaru181-jpg/NIRU_HACKATHON" class="btn" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <!-- CBC FEATURED CALLOUT -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--rule);">
+    <div style="padding:4rem 4vw;border-right:0.5px solid var(--rule);background:var(--ink);">
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;">Featured Module</p>
+      <h3 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);color:var(--paper);line-height:1.1;margin-bottom:1.5rem;">CBC Msaidizi</h3>
+      <p style="font-size:1rem;color:rgba(245,242,236,0.65);line-height:1.8;max-width:44ch;margin-bottom:2rem;">
+        Kenya's Competency-Based Curriculum delivered in Swahili for the first time. Students across the country can now query their full CBC syllabus in their first language, without requiring English proficiency or a stable internet connection.
+      </p>
+
+    </div>
+    <div style="padding:4rem 4vw;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The problem</p>
+        <p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:2rem;max-width:44ch;">Over <strong style="color:var(--ink);">10 million</strong> Kenyan learners interact with the CBC daily. The curriculum exists almost exclusively in English a second or third language for the majority of students.</p>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The solution</p>
+        <p style="font-size:1rem;line-height:1.8;color:var(--muted);max-width:44ch;">CBC Msaidizi uses a fine-tuned Swahili-Gemma 4 model with RAG retrieval to answer CBC curriculum questions in Swahili accurately, contextually, in a personalised manner and at scale. Conversations are grounded in specific CBC chapters, with the model strictly scoped to curriculum content. All learning material is sourced from <a href="https://opiq.co.ke/" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);">Opiq</a>, a KICD-approved digital content platform.</p>
+      </div>
+      <div style="border-top:0.5px solid var(--rule);padding-top:1.5rem;margin-top:2rem;">
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.4;color:var(--ink);">"Language should never be the barrier between a child and their education."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sauti-modules">
+    <div class="module-card">
+      <span class="module-icon">
+        <!-- graduation cap -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.25 1.5 8.5 12 13.75 22.5 8.5 12 3.25Zm0 1.69 7.94 4.06L12 13.06 4.06 9 12 4.94ZM4 10.37v5.13c0 .96.48 1.86 1.29 2.43C6.65 18.85 9.1 19.75 12 19.75s5.35-.9 6.71-1.82A2.94 2.94 0 0 0 20 15.5v-5.13l-1.5.77v4.36c0 .5-.26.98-.74 1.32C16.6 17.6 14.48 18.25 12 18.25s-4.6-.65-5.76-1.43A1.45 1.45 0 0 1 5.5 15.5v-4.36L4 10.37Zm16.5.13v5a.75.75 0 0 0 1.5 0v-5a.75.75 0 0 0-1.5 0Z"/></svg>
+      </span>
+      <h3 class="module-name">CBC Msaidizi</h3>
+      <p class="module-desc">Swahili RAG chatbot for Kenya's Competency-Based Curriculum. Students can query the CBC in their first language.</p>
+      <span class="module-lang">Swahili · RAG · CBC</span>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">
+        <!-- robot/droid -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-1.25 1.84V7h3.75A2.5 2.5 0 0 1 19 9.5v9A2.5 2.5 0 0 1 16.5 21h-9A2.5 2.5 0 0 1 5 18.5v-9A2.5 2.5 0 0 1 7.5 7h3.75V5.84A2 2 0 0 1 10 4a2 2 0 0 1 2-2Zm4.5 6.5h-9A1 1 0 0 0 6.5 9.5v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1ZM9.5 11a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-5 4.5h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1 0-1.5ZM2 11.25a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V12a.75.75 0 0 1 .75-.75Zm20 0a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V12a.75.75 0 0 1 .75-.75Z"/></svg>
+      </span>
+      <h3 class="module-name">Msaidizi wa Jumla</h3>
+      <p class="module-desc">General-purpose Swahili AI assistant. Everyday queries, explanations, and support in Swahili.</p>
+      <span class="module-lang">Swahili · General AI</span>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Zm0 1.5A2.5 2.5 0 0 0 9.5 6v6a2.5 2.5 0 0 0 5 0V6A2.5 2.5 0 0 0 12 3.5ZM5.25 11a.75.75 0 0 1 .75.75A6 6 0 0 0 17.994 12a.75.75 0 0 1 1.5.097A7.5 7.5 0 0 1 12.75 19.43V21.5h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5v-2.07A7.5 7.5 0 0 1 4.5 11.75.75.75 0 0 1 5.25 11Z"/></svg>
+      </span>
+      <h3 class="module-name">African Language Transcriber</h3>
+      <p class="module-desc">Speech transcription and translation across 19 Kenyan languages. From audio to text, no language left behind.</p>
+      <span class="module-lang">19 Languages · ASR</span>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 4A1.5 1.5 0 0 1 4 2.5h3A1.5 1.5 0 0 1 8.5 4v16A1.5 1.5 0 0 1 7 21.5H4A1.5 1.5 0 0 1 2.5 20V4Zm1.5 0v16h3V4H4Zm6-1.5h3A1.5 1.5 0 0 1 14.5 4v16a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 8.5 20V4A1.5 1.5 0 0 1 10 2.5Zm0 1.5v16h3V4h-3Zm7.26-.472a1.5 1.5 0 0 1 1.936-.86l2.717 1.06a1.5 1.5 0 0 1 .86 1.937l-5.55 14.223a1.5 1.5 0 0 1-1.937.86l-2.717-1.06a1.5 1.5 0 0 1-.86-1.937l5.55-14.223Zm1.404 .643L13.115 18.9l2.717 1.06 5.548-14.228-2.716-1.061Z"/></svg>
+      </span>
+      <h3 class="module-name">Maktaba</h3>
+      <p class="module-desc">A paginated digital library of Swahili literature content. Educational resources, searchable and accessible. Includes the first ever Swahili translations of classics like The Strange Case of Dr Jekyll and Mr Hyde, The Death of Ivan Ilyich, and The Duel by Anton Chekhov.</p>
+      <span class="module-lang">Swahili · Digital Library</span>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Founder</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div style="margin-bottom:2rem;overflow:hidden;border:0.5px solid var(--rule);">
+        <img src="elg.jpg" alt="Brian Githaiga" style="width:60%;max-width:280px;display:block;object-fit:cover;object-position:center 30%;max-height:320px;filter:grayscale(15%);margin:0 auto;">
+      </div>
+      <p>
+        <strong>Brian Githaiga</strong> is the founder and lead developer of Sauti AI, based in Nairobi, Kenya. An AI engineer based at Zetech University, Brian built Sauti AI to address the language access gap at the heart of Kenyan education.
+      </p>
+      <p>
+        His work has been recognised at the highest levels of Kenya's emerging AI ecosystem placing 3rd nationally in Generative & Agentic AI at the NIRU AI Hackathon Grand Finale, and winning the Culture Preservation & Archiving category at the JKUAT Interuniversity Hackathon 2025.
+      </p>
+      <p>
+        Brian leads all technical development of the platform, from model fine-tuning and retrieval architecture to interface design and deployment building for Africa, from Africa.
+      </p>
+    </div>
+    <div class="about-aside" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="achievement-card">
+        <h4>Brian Githaiga</h4>
+        <p>Founder &amp; Lead Developer · Sauti AI<br>Nairobi, Kenya</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Zetech University</h4>
+        <p>Nairobi, Kenya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+
+  <div class="closing">
+    <p class="closing-quote">
+      "19 languages. One platform. Built so no Kenyan child has to translate their curiosity before they can learn."
+    </p>
+
+    <div class="closing-contact">
+      <h3>Get in touch</h3>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#3c5e4e555d52575d52555d4e490d040d1a1f0a08075b515d5550125f5351">
+          <span class="cl">Email</span>
+          briankaniaru181&#64;gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/brian-githaiga-625248348/" target="_blank">
+          <span class="cl">LinkedIn</span>
+          linkedin.com/in/brian-githaiga
+ 
