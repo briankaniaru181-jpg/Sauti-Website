@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Umilisi AI | Multilingual EdTech for Africa</title>
+<title>Umilisi AI Multilingual EdTech for Africa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -59,15 +59,15 @@
     line-height: 1;
   }
 
+  /* Logo: sized for nav, white bg blends into paper nav background */
   .nav-logo-img {
     height: 36px;
     width: 36px;
     object-fit: contain;
     flex-shrink: 0;
-    /* FIX: Multiply hides white. Contrast/Brightness ensures 
-       off-white pixels are pushed to pure white to disappear. */
+    border-radius: 50%;
+    /* The logo has a white bg — blend multiply makes it disappear on --paper */
     mix-blend-mode: multiply;
-    filter: contrast(1.1) brightness(1.02);
   }
 
   .nav-links {
@@ -93,7 +93,7 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 57px; 
+    padding-top: 57px; /* matches nav height */
     border-bottom: 1px solid var(--rule);
   }
 
@@ -105,6 +105,7 @@
     border-right: 0.5px solid var(--rule);
   }
 
+  /* Hero top: logo + eyebrow stacked cleanly */
   .hero-top {
     display: flex;
     flex-direction: column;
@@ -113,15 +114,14 @@
     margin-bottom: 2rem;
   }
 
+  /* Large logo in hero — proud and visible */
   .hero-logo {
     width: 90px;
     height: 90px;
     object-fit: contain;
+    mix-blend-mode: multiply; /* white bg disappears on --paper */
     display: block;
     margin-bottom: 0.5rem;
-    /* FIX: Consistent background removal for the large logo */
-    mix-blend-mode: multiply;
-    filter: contrast(1.1) brightness(1.02);
   }
 
   .hero-eyebrow {
@@ -229,6 +229,7 @@
     padding: 3rem 0 0;
   }
 
+  /* ── SECTION SHARED ── */
   section { border-bottom: 1px solid var(--rule); }
 
   .section-header {
@@ -253,6 +254,7 @@
     letter-spacing: -0.01em;
   }
 
+  /* ── ABOUT ── */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -323,6 +325,7 @@
     letter-spacing: 0.06em;
   }
 
+  /* ── SAUTI ── */
   .sauti-hero {
     padding: 4rem 4vw;
     border-bottom: 0.5px solid var(--rule);
@@ -385,6 +388,7 @@
     text-transform: uppercase;
   }
 
+  /* ── CLOSING ── */
   .closing {
     padding: 6rem 4vw;
     display: grid;
@@ -431,6 +435,7 @@
 
   .contact-links .cl { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
 
+  /* ── FOOTER ── */
   footer {
     padding: 1.5rem 4vw;
     display: flex;
@@ -446,6 +451,7 @@
     color: var(--muted);
   }
 
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -456,6 +462,7 @@
   .hero-bio      { animation: fadeUp 0.6s ease 0.25s both; }
   .hero-cta      { animation: fadeUp 0.6s ease 0.35s both; }
 
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
     .hero-left { border-right: none; }
@@ -467,21 +474,32 @@
     .module-card { border-bottom: 0.5px solid var(--rule); }
     .closing { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
+
+    /* Mobile nav: smaller logo, still clean */
     .nav-logo-img { height: 30px; width: 30px; }
+    .nav-logo { font-size: 16px; }
+
+    /* Mobile hero logo slightly smaller */
     .hero-logo { width: 72px; height: 72px; }
   }
 
   @media (max-width: 600px) {
     .sauti-modules { grid-template-columns: 1fr; }
     .module-card { border-right: none; }
+    .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+
     .hero-logo { width: 60px; height: 60px; }
+    .nav-logo-img { height: 26px; width: 26px; }
+    .nav-logo { font-size: 14px; letter-spacing: 0.08em; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
+    <!-- Logo: mix-blend-mode:multiply makes white bg vanish on --paper nav -->
     <img src="Sauti_logo.png" alt="Umilisi AI Logo" class="nav-logo-img">
     Umilisi AI
   </a>
@@ -493,9 +511,11 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div>
+      <!-- Logo + eyebrow stacked: logo sits above eyebrow text, never overlapping -->
       <div class="hero-top">
         <img src="Sauti_logo.png" alt="Umilisi AI" class="hero-logo">
         <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
@@ -512,6 +532,7 @@
 
   <div class="hero-right">
     <p class="hero-pull">"We are not asking for permission to build. We are asking for the infrastructure to scale what already works."</p>
+
     <div class="hero-stat-grid">
       <div class="hero-stat">
         <div class="stat-num">3<span style="font-size:1.5rem;color:var(--muted);">rd</span></div>
@@ -525,6 +546,7 @@
   </div>
 </section>
 
+<!-- MISSION -->
 <section id="mission">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -532,54 +554,188 @@
   </div>
   <div class="about-grid">
     <div class="about-text">
-      <p><strong>Umilisi AI</strong> was born from a fundamental truth: Kenya's Competency-Based Curriculum is delivered almost entirely in English yet for millions of students, English is not a first language.</p>
-      <p>We build AI tools that meet learners where they are. Our flagship product, <strong>CBC Msaidizi</strong>, lets students query the full CBC syllabus in Swahili for the first time.</p>
-      <p>At its core, <strong>Umilisi</strong> signifies more than just knowledge — it represents competence. We build AI tools that ensure every Kenyan learner can achieve this level of mastery in their own tongue.</p>
+      <p>
+        <strong>Umilisi AI</strong> was born from a fundamental truth: Kenya's Competency-Based Curriculum is delivered almost entirely in English yet for millions of students, English is not a first language. Language should be a bridge to knowledge, not a barrier to it.
+      </p>
+      <p>
+        We build AI tools that meet learners where they are. Our flagship product, <strong>CBC Msaidizi</strong>, lets students query the full CBC syllabus in Swahili for the first time. Our methodology is anchored in global research: <a href="https://www.unesco.org/en/articles/new-unesco-report-calls-multilingual-education-unlock-learning-and-inclusion" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);">UNESCO reports</a> that in Africa, children learning in a familiar language achieve a 30% higher comprehension. Umilisi operationalizes this data for the Kenyan context.
+      </p>
+      <p>
+        And as <a href="https://www.sciencedirect.com/science/article/pii/S0738059325001750" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);">one peer-reviewed study</a> notes, "English is the prioritised language in education due to exams being set in English, the status of the language in local and global contexts, and the possibility of getting a prestigious job. Swahili is used to explain, elaborate, and enhance learners' comprehension of subject content. Swahili is considered more engaging for learners, as they understand the language better and can focus on the new concepts and terms of the subject matter."
+      </p>
+      <p>
+        At its core, <strong>Umilisi</strong> signifies more than just knowledge — it represents competence. It is the mastery that occurs when a student no longer has to struggle with translation and can instead focus on the essence of the subject. We build AI tools that ensure every Kenyan learner can achieve this level of Umilisi in their own tongue.
+      </p>
+      <p>
+        Our platform spans four modules serving Kenyan learners and institutions from a CBC-aligned Swahili chatbot to a transcription engine supporting 19 local languages and a Swahili digital library. All running on a fine-tuned, locally-optimised AI model built for African language contexts.
+      </p>
+      <p>
+        Umilisi AI has been validated at the highest levels of Kenya's AI ecosystem recognised at both the NIRU AI Hackathon Grand Finale and the JKUAT Interuniversity Hackathon 2025.
+      </p>
     </div>
+
     <div class="about-aside">
       <div class="about-tag-row">
         <span class="tag">Generative AI</span>
+        <span class="tag">EdTech</span>
         <span class="tag">Swahili NLP</span>
         <span class="tag">CBC Curriculum</span>
         <span class="tag">African Languages</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Speech Recognition</span>
+        <span class="tag">Digital Library</span>
       </div>
+
       <div class="achievement-card">
         <h4>3rd Place NIRU AI Hackathon 2026</h4>
         <p>Generative &amp; Agentic AI Category</p>
+      </div>
+
+      <div class="achievement-card">
+        <h4>Winner JKUAT Interuniversity Hackathon 2025</h4>
+        <p>Culture Preservation &amp; Archiving Category · Jomo Kenyatta University of Agriculture and Technology</p>
+      </div>
+
+      <div class="achievement-card">
+        <h4>Top-15 National Finalist NIRU AI Hackathon</h4>
+        <p>Top 15 out of 2,500+ submissions nationwide</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PLATFORM -->
 <section id="platform">
   <div class="section-header">
     <span class="section-num">02</span>
     <h2 class="section-title">The Platform</h2>
   </div>
+
+  <div class="sauti-hero">
+    <p class="sauti-tagline">
+      A multilingual AI platform for Kenyan education and <em>language access</em> built from the ground up.
+    </p>
+    <div>
+      <a href="https://github.com/briankaniaru181-jpg/NIRU_HACKATHON" class="btn" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <!-- CBC FEATURED CALLOUT -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--rule);">
+    <div style="padding:4rem 4vw;border-right:0.5px solid var(--rule);background:var(--ink);">
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;">Featured Module</p>
+      <h3 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);color:var(--paper);line-height:1.1;margin-bottom:1.5rem;">CBC Msaidizi</h3>
+      <p style="font-size:1rem;color:rgba(245,242,236,0.65);line-height:1.8;max-width:44ch;margin-bottom:2rem;">
+        Kenya's Competency-Based Curriculum delivered in Swahili for the first time. Students across the country can now study their full CBC syllabus in their first language, without requiring English proficiency or a stable internet connection.
+      </p>
+    </div>
+    <div style="padding:4rem 4vw;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The problem</p>
+        <p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:2rem;max-width:44ch;">Over <strong style="color:var(--ink);">10 million</strong> Kenyan learners interact with the CBC daily. The curriculum exists almost exclusively in English a second or third language for the majority of students.</p>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">The solution</p>
+        <p style="font-size:1rem;line-height:1.8;color:var(--muted);max-width:44ch;">CBC Msaidizi uses a fine-tuned Swahili-Gemma 4 model with RAG retrieval to answer CBC curriculum questions in Swahili accurately, contextually, in a personalised manner and at scale. Conversations are grounded in specific CBC chapters, with the model strictly scoped to curriculum content. All learning material is sourced from <a href="https://opiq.co.ke/" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:0.5px solid var(--accent);">Opiq</a>, a KICD-approved digital content platform.</p>
+      </div>
+      <div style="border-top:0.5px solid var(--rule);padding-top:1.5rem;margin-top:2rem;">
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.4;color:var(--ink);">"Language should never be the barrier between a child and their education."</p>
+      </div>
+    </div>
+  </div>
+
   <div class="sauti-modules">
     <div class="module-card">
-      <span class="module-icon">📚</span>
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.25 1.5 8.5 12 13.75 22.5 8.5 12 3.25Zm0 1.69 7.94 4.06L12 13.06 4.06 9 12 4.94ZM4 10.37v5.13c0 .96.48 1.86 1.29 2.43C6.65 18.85 9.1 19.75 12 19.75s5.35-.9 6.71-1.82A2.94 2.94 0 0 0 20 15.5v-5.13l-1.5.77v4.36c0 .5-.26.98-.74 1.32C16.6 17.6 14.48 18.25 12 18.25s-4.6-.65-5.76-1.43A1.45 1.45 0 0 1 5.5 15.5v-4.36L4 10.37Zm16.5.13v5a.75.75 0 0 0 1.5 0v-5a.75.75 0 0 0-1.5 0Z"/></svg>
+      </span>
       <h3 class="module-name">CBC Msaidizi</h3>
-      <p class="module-desc">Swahili RAG chatbot for Kenya's Competency-Based Curriculum.</p>
+      <p class="module-desc">Swahili RAG chatbot for Kenya's Competency-Based Curriculum. Students can query the CBC in their first language.</p>
       <span class="module-lang">Swahili · RAG · CBC</span>
     </div>
     <div class="module-card">
-      <span class="module-icon">🎙️</span>
-      <h3 class="module-name">African Language Transcriber</h3>
-      <p class="module-desc">Speech transcription across 19 Kenyan languages.</p>
-      <span class="module-lang">19 Languages · ASR</span>
-    </div>
-    <div class="module-card">
-      <span class="module-icon">🤖</span>
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-1.25 1.84V7h3.75A2.5 2.5 0 0 1 19 9.5v9A2.5 2.5 0 0 1 16.5 21h-9A2.5 2.5 0 0 1 5 18.5v-9A2.5 2.5 0 0 1 7.5 7h3.75V5.84A2 2 0 0 1 10 4a2 2 0 0 1 2-2Zm4.5 6.5h-9A1 1 0 0 0 6.5 9.5v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1ZM9.5 11a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm-5 4.5h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1 0-1.5ZM2 11.25a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V12a.75.75 0 0 1 .75-.75Zm20 0a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V12a.75.75 0 0 1 .75-.75Z"/></svg>
+      </span>
       <h3 class="module-name">Msaidizi wa Jumla</h3>
-      <p class="module-desc">General-purpose Swahili AI assistant for everyday queries.</p>
+      <p class="module-desc">General-purpose Swahili AI assistant. Everyday queries, explanations, and support in Swahili.</p>
       <span class="module-lang">Swahili · General AI</span>
     </div>
     <div class="module-card">
-      <span class="module-icon">📖</span>
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Zm0 1.5A2.5 2.5 0 0 0 9.5 6v6a2.5 2.5 0 0 0 5 0V6A2.5 2.5 0 0 0 12 3.5ZM5.25 11a.75.75 0 0 1 .75.75A6 6 0 0 0 17.994 12a.75.75 0 0 1 1.5.097A7.5 7.5 0 0 1 12.75 19.43V21.5h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5v-2.07A7.5 7.5 0 0 1 4.5 11.75.75.75 0 0 1 5.25 11Z"/></svg>
+      </span>
+      <h3 class="module-name">African Language Transcriber</h3>
+      <p class="module-desc">Speech transcription and translation across 19 Kenyan languages. From audio to text, no language left behind.</p>
+      <span class="module-lang">19 Languages · ASR</span>
+    </div>
+    <div class="module-card">
+      <span class="module-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 4A1.5 1.5 0 0 1 4 2.5h3A1.5 1.5 0 0 1 8.5 4v16A1.5 1.5 0 0 1 7 21.5H4A1.5 1.5 0 0 1 2.5 20V4Zm1.5 0v16h3V4H4Zm6-1.5h3A1.5 1.5 0 0 1 14.5 4v16a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 8.5 20V4A1.5 1.5 0 0 1 10 2.5Zm0 1.5v16h3V4h-3Zm7.26-.472a1.5 1.5 0 0 1 1.936-.86l2.717 1.06a1.5 1.5 0 0 1 .86 1.937l-5.55 14.223a1.5 1.5 0 0 1-1.937.86l-2.717-1.06a1.5 1.5 0 0 1-.86-1.937l5.55-14.223Zm1.404 .643L13.115 18.9l2.717 1.06 5.548-14.228-2.716-1.061Z"/></svg>
+      </span>
       <h3 class="module-name">Maktaba</h3>
-      <p class="module-desc">A digital library of Swahili literature content.</p>
-      <span class="module-lang">Swahili · Library</span>
+      <p class="module-desc">A paginated digital library of Swahili literature content. Educational resources, searchable and accessible. Includes the first ever Swahili translations of children's classics like Treasure Island, Pinocchio, The Strange Case of Dr Jekyll and Mr Hyde, as well as more mature works like Leo Tolstoy's The Death of Ivan Ilyich, and The Duel by Anton Chekhov.</p>
+      <span class="module-lang">Swahili · Digital Library</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Founder</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div style="margin-bottom:2rem;overflow:hidden;border:0.5px solid var(--rule);">
+        <img src="elg.jpg" alt="Brian Githaiga" style="width:60%;max-width:280px;display:block;object-fit:cover;object-position:center 30%;max-height:320px;filter:grayscale(15%);margin:0 auto;">
+      </div>
+      <p>
+        <strong>Brian Githaiga</strong> is the founder and lead developer of Umilisi, based in Nairobi, Kenya. An AI engineer and Zetech University alumnus, Brian built Sauti AI to address the language access gap at the heart of Kenyan education. Grounded at the intersection of NLP and classical humanities, Brian's work focuses on the formalization of Swahili as a primary medium for academic and technical mastery.
+      </p>
+      <p>
+        His work has been recognised at the highest levels of Kenya's emerging AI ecosystem placing 3rd nationally in Generative & Agentic AI at the NIRU AI Hackathon Grand Finale, and winning the Culture Preservation & Archiving category at the JKUAT Interuniversity Hackathon 2025.
+      </p>
+      <p>
+        Brian leads all technical development of the platform, from model fine-tuning and retrieval architecture to interface design and deployment building for Africa, from Africa.
+      </p>
+    </div>
+    <div class="about-aside" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="achievement-card">
+        <h4>Brian Githaiga</h4>
+        <p>Founder &amp; Lead Developer · Umilisi AI<br>Nairobi, Kenya</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Zetech University</h4>
+        <p>Nairobi, Kenya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+
+  <div class="closing">
+    <p class="closing-quote">
+      "Bridging the gap between heritage and bleeding-edge tech, so every Kenyan learner can achieve Umilisi."
+    </p>
+
+    <div class="closing-contact">
+      <h3>Get in touch</h3>
+      <div class="contact-links">
+        <a href="mailto:briankaniaru181@gmail.com">
+          <span class="cl">Email</span>
+          briankaniaru181@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/brian-githaiga-625248348/" target="_blank">
+          <span class="cl">LinkedIn</span>
+          linkedin.com/in/brian-githaiga
+        </a>
+      </div>
     </div>
   </div>
 </section>
