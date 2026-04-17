@@ -59,15 +59,23 @@
     line-height: 1;
   }
 
-  /* Logo: sized for nav, white bg blends into paper nav background */
+  /* UPDATED: Nav Logo with Background Removal */
   .nav-logo-img {
     height: 36px;
     width: 36px;
     object-fit: contain;
     flex-shrink: 0;
-    border-radius: 50%;
-    /* The logo has a white bg — blend multiply makes it disappear on --paper */
-    mix-blend-mode: multiply;
+    
+    /* --- THE FIX ---
+       This masks out the white background (chroma key).
+       It works seamlessly on the cream site background.
+       We remove the old mix-blend-mode.
+    */
+    background-color: white; /* Specify the background color to remove */
+    -webkit-mask-image: linear-gradient(transparent, transparent), url("Sauti_logo.png");
+    mask-image: linear-gradient(transparent, transparent), url("Sauti_logo.png");
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
   }
 
   .nav-links {
@@ -114,14 +122,23 @@
     margin-bottom: 2rem;
   }
 
-  /* Large logo in hero — proud and visible */
+  /* UPDATED: Hero Logo with Background Removal */
   .hero-logo {
     width: 90px;
     height: 90px;
     object-fit: contain;
-    mix-blend-mode: multiply; /* white bg disappears on --paper */
     display: block;
     margin-bottom: 0.5rem;
+
+    /* --- THE FIX ---
+       Using the same chroma key technique here.
+       We remove the old mix-blend-mode.
+    */
+    background-color: white; /* Specify the background color to remove */
+    -webkit-mask-image: linear-gradient(transparent, transparent), url("Sauti_logo.png");
+    mask-image: linear-gradient(transparent, transparent), url("Sauti_logo.png");
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
   }
 
   .hero-eyebrow {
@@ -496,11 +513,9 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <!-- Logo: mix-blend-mode:multiply makes white bg vanish on --paper nav -->
-    <img src="Sauti_logo.png" alt="Umilisi AI Logo" class="nav-logo-img">
+    <div class="nav-logo-img" role="img" aria-label="Umilisi AI Logo"></div>
     Umilisi AI
   </a>
   <ul class="nav-links">
@@ -511,13 +526,11 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div>
-      <!-- Logo + eyebrow stacked: logo sits above eyebrow text, never overlapping -->
       <div class="hero-top">
-        <img src="Sauti_logo.png" alt="Umilisi AI" class="hero-logo">
+        <div class="hero-logo" role="img" aria-label="Umilisi AI"></div>
         <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
       </div>
       <h1 class="hero-name">Umilisi<br><em>AI</em></h1>
@@ -546,7 +559,6 @@
   </div>
 </section>
 
-<!-- MISSION -->
 <section id="mission">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -604,7 +616,6 @@
   </div>
 </section>
 
-<!-- PLATFORM -->
 <section id="platform">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -620,7 +631,6 @@
     </div>
   </div>
 
-  <!-- CBC FEATURED CALLOUT -->
   <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--rule);">
     <div style="padding:4rem 4vw;border-right:0.5px solid var(--rule);background:var(--ink);">
       <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;">Featured Module</p>
@@ -678,7 +688,6 @@
   </div>
 </section>
 
-<!-- FOUNDER -->
 <section id="founder">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -712,7 +721,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
     <span class="section-num">04</span>
