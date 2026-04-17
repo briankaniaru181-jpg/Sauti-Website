@@ -492,16 +492,26 @@
     .hero-logo { width: 72px; height: 72px; }
   }
 
-  @media (max-width: 600px) {
+ @media (max-width: 600px) {
     .sauti-modules { grid-template-columns: 1fr; }
     .module-card { border-right: none; }
     .hero-stat-grid { grid-template-columns: 1fr 1fr; }
 
     .hero-logo { width: 100px; height: 100px; }
+   
     .nav-logo-img { height: 26px; width: 26px; }
     .nav-logo { font-size: 14px; letter-spacing: 0.08em; }
     .hero-name-row { gap: 0.5rem; }
-  }
+    
+    .hero-eyebrow {
+        text-align: center;
+        width: 100%;
+    }
+  
+    .hero-name-row {
+        justify-content: center;
+    }
+}
 </style>
 </head>
 <body>
