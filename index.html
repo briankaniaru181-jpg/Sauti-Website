@@ -105,7 +105,7 @@
     border-right: 0.5px solid var(--rule);
   }
 
-  /* Hero top: logo + eyebrow stacked cleanly */
+  /* Hero top: eyebrow above logo+name row */
   .hero-top {
     display: flex;
     flex-direction: column;
@@ -114,14 +114,15 @@
     margin-bottom: 2rem;
   }
 
-  /* Large logo in hero — proud and visible */
+  /* Large logo in hero — now inline with name */
   .hero-logo {
     width: 90px;
     height: 90px;
     object-fit: contain;
     mix-blend-mode: multiply; /* white bg disappears on --paper */
     display: block;
-    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+    margin-bottom: 0; /* removed margin for inline layout */
   }
 
   .hero-eyebrow {
@@ -130,6 +131,14 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .hero-name {
@@ -137,7 +146,7 @@
     font-size: clamp(4rem, 8vw, 8rem);
     line-height: 0.92;
     letter-spacing: -0.02em;
-    margin-bottom: 2rem;
+    margin: 0; /* removed bottom margin */
   }
 
   .hero-name em {
@@ -457,8 +466,8 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-top      { animation: fadeUp 0.6s ease both; }
-  .hero-name     { animation: fadeUp 0.6s ease 0.15s both; }
+  .hero-eyebrow      { animation: fadeUp 0.6s ease both; }
+  .hero-name-row     { animation: fadeUp 0.6s ease 0.15s both; }
   .hero-bio      { animation: fadeUp 0.6s ease 0.25s both; }
   .hero-cta      { animation: fadeUp 0.6s ease 0.35s both; }
 
@@ -491,6 +500,7 @@
     .hero-logo { width: 60px; height: 60px; }
     .nav-logo-img { height: 26px; width: 26px; }
     .nav-logo { font-size: 14px; letter-spacing: 0.08em; }
+    .hero-name-row { gap: 0.5rem; }
   }
 </style>
 </head>
@@ -515,12 +525,12 @@
 <section class="hero">
   <div class="hero-left">
     <div>
-      <!-- Logo + eyebrow stacked: logo sits above eyebrow text, never overlapping -->
-      <div class="hero-top">
+      <!-- Logo + eyebrow stacked: eyebrow above, logo+name inline -->
+      <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
+      <div class="hero-name-row">
         <img src="Sauti_logo.png" alt="Umilisi AI" class="hero-logo">
-        <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
+        <h1 class="hero-name">Umilisi <em>AI</em></h1>
       </div>
-      <h1 class="hero-name">Umilisi<br><em>AI</em></h1>
       <p class="hero-bio">
         AI-powered education in the languages Kenyan students actually speak. Umilisi AI makes the CBC curriculum accessible in Swahili and local languages for the first time.
       </p>
