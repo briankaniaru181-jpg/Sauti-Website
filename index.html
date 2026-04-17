@@ -40,9 +40,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 4vw;
+    padding: 0.6rem 4vw;
     border-bottom: 0.5px solid var(--rule);
-    background: rgba(245,242,236,0.92);
+    background: rgba(245,242,236,0.95);
     backdrop-filter: blur(8px);
   }
 
@@ -53,6 +53,21 @@
     text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+
+  /* Logo: sized for nav, white bg blends into paper nav background */
+  .nav-logo-img {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 50%;
+    /* The logo has a white bg — blend multiply makes it disappear on --paper */
+    mix-blend-mode: multiply;
   }
 
   .nav-links {
@@ -78,7 +93,7 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
+    padding-top: 57px; /* matches nav height */
     border-bottom: 1px solid var(--rule);
   }
 
@@ -90,13 +105,31 @@
     border-right: 0.5px solid var(--rule);
   }
 
+  /* Hero top: logo + eyebrow stacked cleanly */
+  .hero-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* Large logo in hero — proud and visible */
+  .hero-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* white bg disappears on --paper */
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
   .hero-eyebrow {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 15px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 2rem;
   }
 
   .hero-name {
@@ -355,36 +388,6 @@
     text-transform: uppercase;
   }
 
-  /* ── TECH STACK ── */
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 0.5px solid var(--rule);
-  }
-
-  .stack-item {
-    padding: 2rem;
-    border-right: 0.5px solid var(--rule);
-    border-bottom: 0.5px solid var(--rule);
-  }
-
-  .stack-item:nth-child(3n) { border-right: none; }
-
-  .stack-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-
-  .stack-value {
-    font-family: var(--serif);
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
   /* ── CLOSING ── */
   .closing {
     padding: 6rem 4vw;
@@ -454,10 +457,10 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero-name    { animation: fadeUp 0.6s ease 0.1s both; }
-  .hero-bio     { animation: fadeUp 0.6s ease 0.2s both; }
-  .hero-cta     { animation: fadeUp 0.6s ease 0.3s both; }
+  .hero-top      { animation: fadeUp 0.6s ease both; }
+  .hero-name     { animation: fadeUp 0.6s ease 0.15s both; }
+  .hero-bio      { animation: fadeUp 0.6s ease 0.25s both; }
+  .hero-cta      { animation: fadeUp 0.6s ease 0.35s both; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -469,17 +472,25 @@
     .sauti-modules { grid-template-columns: 1fr 1fr; }
     .module-card:nth-child(2) { border-right: none; }
     .module-card { border-bottom: 0.5px solid var(--rule); }
-    .stack-grid { grid-template-columns: 1fr 1fr; }
-    .stack-item:nth-child(3n) { border-right: 0.5px solid var(--rule); }
-    .stack-item:nth-child(2n) { border-right: none; }
     .closing { grid-template-columns: 1fr; gap: 2rem; }
     .nav-links { display: none; }
+
+    /* Mobile nav: smaller logo, still clean */
+    .nav-logo-img { height: 30px; width: 30px; }
+    .nav-logo { font-size: 16px; }
+
+    /* Mobile hero logo slightly smaller */
+    .hero-logo { width: 72px; height: 72px; }
   }
 
   @media (max-width: 600px) {
     .sauti-modules { grid-template-columns: 1fr; }
     .module-card { border-right: none; }
     .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+
+    .hero-logo { width: 60px; height: 60px; }
+    .nav-logo-img { height: 26px; width: 26px; }
+    .nav-logo { font-size: 14px; letter-spacing: 0.08em; }
   }
 </style>
 </head>
@@ -487,8 +498,9 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
-    <img src="Sauti_logo.png" alt="Umilisi AI Logo" style="height:100px;width:100px;object-fit:contain;">
+  <a href="#" class="nav-logo">
+    <!-- Logo: mix-blend-mode:multiply makes white bg vanish on --paper nav -->
+    <img src="Sauti_logo.png" alt="Umilisi AI Logo" class="nav-logo-img">
     Umilisi AI
   </a>
   <ul class="nav-links">
@@ -503,13 +515,17 @@
 <section class="hero">
   <div class="hero-left">
     <div>
-      <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
+      <!-- Logo + eyebrow stacked: logo sits above eyebrow text, never overlapping -->
+      <div class="hero-top">
+        <img src="Sauti_logo.png" alt="Umilisi AI" class="hero-logo">
+        <p class="hero-eyebrow">Multilingual EdTech · Nairobi, Kenya</p>
+      </div>
       <h1 class="hero-name">Umilisi<br><em>AI</em></h1>
       <p class="hero-bio">
         AI-powered education in the languages Kenyan students actually speak. Umilisi AI makes the CBC curriculum accessible in Swahili and local languages for the first time.
       </p>
       <div class="hero-cta">
-        <a href="/cdn-cgi/l/email-protection#5436263d353a3f353a3d352621656c65727762606f3339353d387a373b39" class="btn btn-fill" style="display:block;text-align:center;">Book a Demo</a>
+        <a href="mailto:briankaniaru181@gmail.com" class="btn btn-fill" style="display:block;text-align:center;">Book a Demo</a>
       </div>
     </div>
   </div>
