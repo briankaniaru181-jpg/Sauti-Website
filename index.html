@@ -515,6 +515,128 @@
         justify-content: center;
     }
 }
+
+/* ── GALLERY ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  border-bottom: 0.5px solid var(--rule);
+}
+
+.gallery-item {
+  position: relative;
+  border-right: 0.5px solid var(--rule);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.gallery-item:last-child { border-right: none; }
+
+.gallery-item--wide {
+  grid-column: span 1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+  filter: grayscale(0%);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(to top, rgba(13,13,13,0.7) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.gallery-label {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.gallery-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+/* Endorsement strip */
+.endorsement-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 1fr;
+  border-bottom: 0.5px solid var(--rule);
+  min-height: 420px;
+}
+
+.endorsement-label-col {
+  border-right: 0.5px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.endorsement-doc {
+  padding: 3rem 4vw;
+  border-right: 0.5px solid var(--rule);
+  display: flex;
+  align-items: flex-start;
+}
+
+.endorsement-doc-inner {
+  cursor: zoom-in;
+}
+
+.endorsement-img {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  border: 0.5px solid var(--rule);
+  box-shadow: 4px 4px 0 var(--rule);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.endorsement-img:hover {
+  box-shadow: 8px 8px 0 rgba(13,13,13,0.15);
+  transform: translateY(-2px);
+}
+
+.endorsement-text-col {
+  padding: 3rem 4vw;
+  display: flex;
+  align-items: center;
+}
+
+/* Gallery responsive */
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(2) { border-right: none; }
+  .gallery-item:nth-child(3) { border-right: none; border-top: 0.5px solid var(--rule); grid-column: span 2; aspect-ratio: 16/6; }
+  .endorsement-row { grid-template-columns: 1fr; min-height: auto; }
+  .endorsement-label-col { display: none; }
+  .endorsement-doc { border-right: none; border-bottom: 0.5px solid var(--rule); }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item { border-right: none; border-bottom: 0.5px solid var(--rule); grid-column: span 1 !important; aspect-ratio: 4/3 !important; }
+}
 </style>
 </head>
 <body>
@@ -529,6 +651,7 @@
   <ul class="nav-links">
     <li><a href="#platform">Platform</a></li>
     <li><a href="#mission">Mission</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#founder">Founder</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -696,10 +819,65 @@
   </div>
 </section>
 
+ <!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Gallery</h2>
+  </div>
+
+  <div style="padding:3rem 4vw 1rem;border-bottom:0.5px solid var(--rule);">
+    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);">Hackathon wins &amp; recognition</p>
+  </div>
+
+  <!-- PHOTO GRID -->
+  <div class="gallery-grid">
+    <div class="gallery-item gallery-item--wide">
+      <img src="YOUR_PHOTO_1.jpg" alt="NIRU AI Hackathon 2026">
+      <div class="gallery-caption">
+        <span class="gallery-label">NIRU AI Hackathon 2026</span>
+        <span class="gallery-sub">3rd Place · Generative &amp; Agentic AI</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="YOUR_PHOTO_2.jpg" alt="JKUAT Hackathon 2025">
+      <div class="gallery-caption">
+        <span class="gallery-label">JKUAT Interuniversity 2025</span>
+        <span class="gallery-sub">1st Place · Culture Preservation</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="YOUR_PHOTO_3.jpg" alt="Team">
+      <div class="gallery-caption">
+        <span class="gallery-label">Behind the build</span>
+        <span class="gallery-sub">Nairobi, Kenya</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENDORSEMENT LETTER -->
+  <div class="endorsement-row">
+    <div class="endorsement-label-col">
+      <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);">Endorsement</p>
+    </div>
+    <div class="endorsement-doc">
+      <div class="endorsement-doc-inner">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1rem;">Official Letter</span>
+        <img src="YOUR_ENDORSEMENT_LETTER.jpg" alt="Endorsement Letter" class="endorsement-img">
+        <p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:1rem;letter-spacing:0.06em;">Click to view full document</p>
+      </div>
+    </div>
+    <div class="endorsement-text-col">
+      <p style="font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.4;color:var(--ink);max-width:32ch;">"Recognition at the highest levels of Kenya's emerging AI ecosystem."</p>
+    </div>
+  </div>
+
+</section>
+
 <!-- FOUNDER -->
 <section id="founder">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">Founder</h2>
   </div>
   <div class="about-grid">
@@ -733,7 +911,7 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">Contact</h2>
   </div>
 
